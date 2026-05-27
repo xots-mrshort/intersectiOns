@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>IntersectiOn</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="homepage">
+    <main class="frame" aria-label="Intersection homepage">
+      <svg class="route-layer" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g>
+          <g id="cool-lines" class="route-line-group cool-lines">
+            <path
+              id="line-green"
+              class="route-line route-line-green"
+              d="M-216.667 282.5H838.5C852.307 282.5 863.5 271.307 863.5 257.5V173.355C863.5 166.725 866.134 160.366 870.822 155.678L1078.5 -52"
+              fill="none"
+              stroke="var(--color-line-green)"
+              stroke-width="20"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <image href="./green train.svg" x="-58" y="-34" width="116" height="68" preserveAspectRatio="xMidYMid meet">
+              <animateMotion
+                dur="8s"
+                repeatCount="indefinite"
+                rotate="auto"
+                keyTimes="0;1"
+                keyPoints="0.12;0.86"
+                calcMode="linear"
+                path="M-216.667 282.5H838.5C852.307 282.5 863.5 271.307 863.5 257.5V173.355C863.5 166.725 866.134 160.366 870.822 155.678L1078.5 -52"
+              />
+            </image>
+
+            <path
+              id="line-blue"
+              class="route-line route-line-blue"
+              d="M-320 1514.07L905 735V181.205L1168 -81"
+              fill="none"
+              stroke="var(--color-line-blue)"
+              stroke-width="20"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </g>
+
+          <g id="warm-lines" class="route-line-group warm-lines">
+            <path
+              id="line-yellow"
+              class="route-line route-line-yellow"
+              d="M-745 822H-83C-77.708 822 -72.52 820.491 -68.057 817.652L893.13 206.361C897.593 203.522 902.781 202.013 908.073 202.013H2015"
+              fill="none"
+              stroke="var(--color-line-yellow)"
+              stroke-width="20"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+
+            <path
+              id="line-orange"
+              class="route-line route-line-orange"
+              d="M-745 860H-83C-77.708 860 -72.52 858.491 -68.057 855.652L893.13 244.361C897.593 241.522 902.781 240.013 908.073 240.013H2015"
+              fill="none"
+              stroke="var(--color-line-orange)"
+              stroke-width="20"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <image href="./orange train.svg" x="-58" y="-34" width="116" height="68" preserveAspectRatio="xMidYMid meet">
+              <animateMotion
+                dur="8s"
+                repeatCount="indefinite"
+                rotate="auto"
+                keyTimes="0;1"
+                keyPoints="0.08;0.92"
+                calcMode="linear"
+                path="M-745 860H-83C-77.708 860 -72.52 858.491 -68.057 855.652L893.13 244.361C897.593 241.522 902.781 240.013 908.073 240.013H2015"
+              />
+            </image>
+          </g>
+
+          <circle cx="1103.72" cy="429" r="42" fill="var(--color-board-bg)" />
+        </g>
+      </svg>
+
+      <div class="ui-layer">
+        <h1 class="title">intersecti<span class="accent">O</span>n</h1>
+
+        <nav class="menu" aria-label="Main menu">
+          <a id="playLink" class="menu-item play" href="./central.html">
+            <svg class="arrow-icon" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="69.2879" y="34.6443" width="11.1627" height="46.5111" transform="rotate(135 69.2879 34.6443)" fill="var(--color-arrow-main)"/>
+              <rect x="61.3934" y="26.7517" width="11.1627" height="46.5111" transform="rotate(45 61.3934 26.7517)" fill="var(--color-arrow-main)"/>
+              <rect x="55.8133" y="29.0623" width="11.1627" height="50.2319" transform="rotate(90 55.8133 29.0623)" fill="var(--color-arrow-main)"/>
+            </svg>
+            <span class="label">Play</span>
+          </a>
+
+          <a class="menu-item about" href="#">
+            <svg class="arrow-icon" viewBox="0 0 73 73" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M17.8518 17.622L52.636 52.4062M17.3155 52.7893H55.7773M52.7893 17.3155L52.3296 56.3903" stroke="var(--color-arrow-sub)" stroke-width="6.9346"/>
+            </svg>
+            <span class="label">About</span>
+          </a>
+        </nav>
+      </div>
+    </main>
+
+    <script>
+      const playLink = document.getElementById('playLink');
+      if (playLink) {
+        playLink.addEventListener('click', () => {
+          window.location.href = './central.html';
+        });
+      }
+    </script>
+  </body>
+</html>
+
