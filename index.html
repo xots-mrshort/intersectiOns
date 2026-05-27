@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Dependencies for p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/iri3tnh.css">
+    <script>
+      (function () {
+        const STORAGE_KEY = 'central_onboarding_v1';
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) {
+          window.location.replace('central.html');
+          return;
+        }
+        try {
+          const parsed = JSON.parse(raw);
+          const valid = parsed && Array.isArray(parsed.places) && parsed.places.length >= 3;
+          if (!valid) window.location.replace('central.html');
+        } catch (err) {
+          window.location.replace('central.html');
+        }
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <section id="map-screen" class="screen">
+      <div id="canvas-wrap"></div>
+    </section>
+    <div id="nameBox" aria-label="Line legend"></div>
+    <div id="controlPanel" aria-label="Train controls">
+      <div class="tabs">
+        <button class="tab active" data-tab="stations">Stations</button>
+        <button class="tab" data-tab="trains">Trains</button>
+      </div>
+
+      <section id="stationsTab" class="tabContent active">
+        <h1>STATIONS</h1>
+        <p>Add people you often spend time with at each place.</p>
+        <div id="stationList"></div>
+      </section>
+
+      <section id="trainsTab" class="tabContent">
+        <h1>TRAINS</h1>
+        <p>Closeness shapes pulse strength, glow, and sound. Fate steers whether paths intersect.</p>
+        <div id="trainCreator" class="trainCreator">
+          <div class="trainCreatorRow">
+            <input id="trainNameInput" type="text" placeholder="Train name" />
+            <select id="trainStationSelect" aria-label="Select station"></select>
+            <button id="addTrainBtn" type="button">Add Train</button>
+          </div>
+        </div>
+        <div id="trainList"></div>
+      </section>
+    </div>
+    <script src="sketch1.js"></script>
+  </body>
+</html>

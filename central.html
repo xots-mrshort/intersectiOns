@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Central Onboarding</title>
+    <link rel="stylesheet" href="https://use.typekit.net/iri3tnh.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="central-page">
+    <main class="scene" aria-label="Central onboarding">
+      <svg class="warm-lines" viewBox="0 0 1400 1024" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path
+          d="M-300 1840L807.073 733.013H2610"
+          fill="none"
+          stroke="var(--line-yellow)"
+          stroke-width="20"
+          stroke-linecap="round"
+          stroke-linejoin="miter"
+        />
+        <path
+          d="M-300 1860L807.073 753.013H2610"
+          fill="none"
+          stroke="var(--line-orange)"
+          stroke-width="20"
+          stroke-linecap="round"
+          stroke-linejoin="miter"
+        />
+      </svg>
+
+      <img class="yellow-train" src="./yellow train.svg" alt="" aria-hidden="true" />
+
+      <a class="exit-control" href="./homepage.html" aria-label="Exit to homepage">
+        <svg class="arrow-icon exit" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="69.2879" y="34.6443" width="11.1627" height="46.5111" transform="rotate(135 69.2879 34.6443)"/>
+          <rect x="61.3934" y="26.7517" width="11.1627" height="46.5111" transform="rotate(45 61.3934 26.7517)"/>
+          <rect x="55.8133" y="29.0623" width="11.1627" height="50.2319" transform="rotate(90 55.8133 29.0623)"/>
+        </svg>
+        <span class="exit-pill">Exit</span>
+      </a>
+
+      <section class="signboard" aria-label="Sign board form">
+        <header class="wayfinding">
+          <div class="wayfinding-arrow" aria-hidden="true">
+            <svg class="arrow-icon" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+              <rect x="69.2879" y="34.6443" width="11.1627" height="46.5111" transform="rotate(135 69.2879 34.6443)"/>
+              <rect x="61.3934" y="26.7517" width="11.1627" height="46.5111" transform="rotate(45 61.3934 26.7517)"/>
+              <rect x="55.8133" y="29.0623" width="11.1627" height="50.2319" transform="rotate(90 55.8133 29.0623)"/>
+            </svg>
+          </div>
+          <h1 class="board-title">Central</h1>
+          <div id="userBubblesContainer" class="route-bubbles"></div>
+        </header>
+
+        <div class="board-content">
+          <div class="field">
+            <label class="input-label" for="username">Your name</label>
+            <input id="username" class="text-input" type="text" placeholder="Enter your name..." />
+          </div>
+
+          <div class="field">
+            <label class="input-label" for="lifeStages">Choose your stages in life</label>
+            <input id="lifeStages" class="text-input" type="text" placeholder="Eg: High school,..." />
+          </div>
+
+          <div class="station-header">
+            <h2>Stations</h2>
+            <span>Select 3 stops you often visit</span>
+          </div>
+          <hr class="station-rule" />
+
+          <div class="station-row">
+            <div class="track-input t1">
+              <span class="track-dot">1</span>
+              <input id="place1" type="text" placeholder="" />
+            </div>
+            <div class="track-input t2">
+              <span class="track-dot">2</span>
+              <input id="place2" type="text" placeholder="" />
+            </div>
+            <div class="track-input t3">
+              <span class="track-dot">3</span>
+              <input id="place3" type="text" placeholder="" />
+            </div>
+          </div>
+        </div>
+
+        <footer class="sign-footer">
+          <div class="footer-mlt">MLT</div>
+          <div class="footer-copy">A Meeting of<br />Lives in Transit</div>
+          <div class="footer-copy secondary">Human<br />Connections</div>
+          <div class="footer-real" aria-label="R E A L">
+            <span class="real-chip r">R</span>
+            <span class="real-chip e">E</span>
+            <span class="real-chip a">A</span>
+            <span class="real-chip l">L</span>
+          </div>
+        </footer>
+      </section>
+
+      <button id="continueBtn" class="play-control" type="button" aria-label="Play">
+        <svg class="arrow-icon" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="69.2879" y="34.6443" width="11.1627" height="46.5111" transform="rotate(135 69.2879 34.6443)"/>
+          <rect x="61.3934" y="26.7517" width="11.1627" height="46.5111" transform="rotate(45 61.3934 26.7517)"/>
+          <rect x="55.8133" y="29.0623" width="11.1627" height="50.2319" transform="rotate(90 55.8133 29.0623)"/>
+        </svg>
+        <span class="play-pill">Play</span>
+      </button>
+    </main>
+
+    <script>
+      const STORAGE_KEY = 'central_onboarding_v1';
+      const usernameInput = document.getElementById('username');
+      const userBubblesContainer = document.getElementById('userBubblesContainer');
+      const MAX_USERNAME_BUBBLES = 6;
+      const bubbleClasses = ['r', 'e', 'a', 'l'];
+
+      function syncUserInitialBubble() {
+        if (!usernameInput || !userBubblesContainer) return;
+
+        const letters = Array.from(`${usernameInput.value || ''}`
+          .toUpperCase()
+          .replace(/\s+/g, ''))
+          .slice(0, MAX_USERNAME_BUBBLES);
+
+        userBubblesContainer.innerHTML = '';
+        for (let i = 0; i < letters.length; i++) {
+          const bubble = document.createElement('div');
+          bubble.className = `bubble ${bubbleClasses[i % bubbleClasses.length]}`;
+          bubble.textContent = letters[i];
+          userBubblesContainer.appendChild(bubble);
+        }
+      }
+
+      if (usernameInput) {
+        usernameInput.addEventListener('input', syncUserInitialBubble);
+      }
+
+      const savedRaw = localStorage.getItem(STORAGE_KEY);
+      if (savedRaw) {
+        try {
+          const saved = JSON.parse(savedRaw);
+          if (saved && Array.isArray(saved.places)) {
+            document.getElementById('username').value = saved.username || '';
+            document.getElementById('lifeStages').value = saved.stages || '';
+            document.getElementById('place1').value = saved.places[0] || '';
+            document.getElementById('place2').value = saved.places[1] || '';
+            document.getElementById('place3').value = saved.places[2] || '';
+          }
+        } catch (err) {
+          // Ignore malformed local data.
+        }
+      }
+
+      syncUserInitialBubble();
+
+      document.getElementById('continueBtn').addEventListener('click', () => {
+        const username = document.getElementById('username').value.trim() || 'Anonymous';
+        const stages = document.getElementById('lifeStages').value.trim() || 'My Route';
+        const places = [
+          document.getElementById('place1').value.trim(),
+          document.getElementById('place2').value.trim(),
+          document.getElementById('place3').value.trim()
+        ].map((value, index) => value || `Place ${index + 1}`);
+
+        const payload = {
+          username,
+          stages,
+          places
+        };
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+        window.location.href = 'index.html';
+      });
+    </script>
+  </body>
+</html>
