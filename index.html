@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>IntersectiOn</title>
     <link rel="stylesheet" href="./style.css" />
+    <style>
+      body.homepage {
+        background: #FBF4E1;
+      }
+    </style>
   </head>
   <body class="homepage">
     <main class="frame" aria-label="Intersection homepage">
@@ -14,35 +19,36 @@
             <path
               id="line-green"
               class="route-line route-line-green"
-              d="M-216.667 282.5H838.5C852.307 282.5 863.5 271.307 863.5 257.5V173.355C863.5 166.725 866.134 160.366 870.822 155.678L1078.5 -52"
               fill="none"
+              d="M-603.5 282.5H838.5C852.307 282.5 863.5 271.307 863.5 257.5V173.355C863.5 166.725 866.134 160.366 870.822 155.678L1310 -283.5" 
               stroke="var(--color-line-green)"
               stroke-width="20"
               stroke-linecap="round"
               stroke-linejoin="round"
             />
-            <image href="./green train.svg" x="-58" y="-34" width="116" height="68" preserveAspectRatio="xMidYMid meet">
-              <animateMotion
-                dur="8s"
-                repeatCount="indefinite"
-                rotate="auto"
-                keyTimes="0;1"
-                keyPoints="0.12;0.86"
-                calcMode="linear"
-                path="M-216.667 282.5H838.5C852.307 282.5 863.5 271.307 863.5 257.5V173.355C863.5 166.725 866.134 160.366 870.822 155.678L1078.5 -52"
-              />
-            </image>
 
             <path
               id="line-blue"
               class="route-line route-line-blue"
-              d="M-320 1514.07L905 735V181.205L1168 -81"
+              d="M-7 1356L883.992 806.824C891.377 802.272 895.874 794.217 895.874 785.542V499.567V181.205C895.874 174.587 898.498 168.239 903.172 163.552L1162 -96" 
               fill="none"
               stroke="var(--color-line-blue)"
               stroke-width="20"
               stroke-linecap="round"
               stroke-linejoin="round"
             />
+
+            <image class = "green-train" href="./green train.svg" x="-58" y="-34" width="116" height="68" preserveAspectRatio="xMidYMid meet">
+              <animateMotion
+                dur="9s"
+                repeatCount="indefinite"
+                rotate="auto"
+                keyTimes="0;1"
+                keyPoints="0.12;0.93"
+                calcMode="linear"
+                path="M-603.5 282.5H838.5C852.307 282.5 863.5 271.307 863.5 257.5V173.355C863.5 166.725 866.134 160.366 870.822 155.678L1310 -283.5"
+              />
+            </image>
           </g>
 
           <g id="warm-lines" class="route-line-group warm-lines">
@@ -80,7 +86,7 @@
             </image>
           </g>
 
-          <circle cx="1103.72" cy="429" r="42" fill="var(--color-board-bg)" />
+          <circle cx="1103.72" cy="429" r="42" fill="#FBF4E1" />
         </g>
       </svg>
 
