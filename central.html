@@ -89,11 +89,11 @@
           <div class="footer-mlt">MLT</div>
           <div class="footer-copy">A Meeting of<br />Lives in Transit</div>
           <div class="footer-copy secondary">Human<br />Connections</div>
-          <div class="footer-real" aria-label="R E A L">
+          <div class="footer-real" aria-label="R E L A">
             <span class="real-chip r">R</span>
             <span class="real-chip e">E</span>
-            <span class="real-chip a">A</span>
-            <span class="real-chip l">L</span>
+            <span class="real-chip a">L</span>
+            <span class="real-chip l">A</span>
           </div>
         </footer>
       </section>
@@ -134,22 +134,6 @@
 
       if (usernameInput) {
         usernameInput.addEventListener('input', syncUserInitialBubble);
-      }
-
-      const savedRaw = localStorage.getItem(STORAGE_KEY);
-      if (savedRaw) {
-        try {
-          const saved = JSON.parse(savedRaw);
-          if (saved && Array.isArray(saved.places)) {
-            document.getElementById('username').value = saved.username || '';
-            document.getElementById('lifeStages').value = saved.stages || '';
-            document.getElementById('place1').value = saved.places[0] || '';
-            document.getElementById('place2').value = saved.places[1] || '';
-            document.getElementById('place3').value = saved.places[2] || '';
-          }
-        } catch (err) {
-          // Ignore malformed local data.
-        }
       }
 
       syncUserInitialBubble();

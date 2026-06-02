@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <!-- Dependencies for p5.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
@@ -25,37 +25,56 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8" />
+    <title>IntersectiOn Train Map</title>
   </head>
-  <body>
-    <section id="map-screen" class="screen">
-      <div id="canvas-wrap"></div>
-    </section>
-    <div id="nameBox" aria-label="Line legend"></div>
-    <div id="controlPanel" aria-label="Train controls">
-      <div class="tabs">
-        <button class="tab active" data-tab="stations">Stations</button>
-        <button class="tab" data-tab="trains">Trains</button>
-      </div>
-
-      <section id="stationsTab" class="tabContent active">
-        <h1>STATIONS</h1>
-        <p>Add people you often spend time with at each place.</p>
-        <div id="stationList"></div>
+  <body class="train-page">
+    <main class="train-scene" aria-label="Intersection train map playground">
+      <section id="map-screen" class="screen">
+        <div id="canvas-wrap"></div>
       </section>
 
-      <section id="trainsTab" class="tabContent">
-        <h1>TRAINS</h1>
-        <p>Closeness shapes pulse strength, glow, and sound. Fate steers whether paths intersect.</p>
-        <div id="trainCreator" class="trainCreator">
-          <div class="trainCreatorRow">
-            <input id="trainNameInput" type="text" placeholder="Train name" />
-            <select id="trainStationSelect" aria-label="Select station"></select>
-            <button id="addTrainBtn" type="button">Add Train</button>
-          </div>
+      <a class="exit-control" href="./central.html" aria-label="Back to central setup">
+        <svg class="arrow-icon exit" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="69.2879" y="34.6443" width="11.1627" height="46.5111" transform="rotate(135 69.2879 34.6443)" />
+          <rect x="61.3934" y="26.7517" width="11.1627" height="46.5111" transform="rotate(45 61.3934 26.7517)" />
+          <rect x="55.8133" y="29.0623" width="11.1627" height="50.2319" transform="rotate(90 55.8133 29.0623)" />
+        </svg>
+        <span class="exit-pill">Back</span>
+      </a>
+
+      <div id="nameBox" aria-label="Line legend"></div>
+
+      <div id="controlPanel" aria-label="Train controls">
+        <div class="panelHeader">
+          <p class="panelKicker">Central Network</p>
+          <h1>Train Console</h1>
         </div>
-        <div id="trainList"></div>
-      </section>
-    </div>
+
+        <div class="tabs">
+          <button class="tab active" data-tab="stations">Stations</button>
+          <button class="tab" data-tab="trains">Trains</button>
+        </div>
+
+        <section id="stationsTab" class="tabContent active">
+          <h2>STATIONS</h2>
+          <p>Add people you often spend time with at each place.</p>
+          <div id="stationList"></div>
+        </section>
+
+        <section id="trainsTab" class="tabContent">
+          <h2>TRAINS</h2>
+          <p>Closeness shapes pulse strength, glow, and sound. Fate steers whether paths intersect.</p>
+          <div id="trainCreator" class="trainCreator">
+            <div class="trainCreatorRow">
+              <input id="trainNameInput" type="text" placeholder="Train name" />
+              <select id="trainStationSelect" aria-label="Select station"></select>
+              <button id="addTrainBtn" type="button">Add Train</button>
+            </div>
+          </div>
+          <div id="trainList"></div>
+        </section>
+      </div>
+    </main>
     <script src="sketch1.js"></script>
   </body>
 </html>
